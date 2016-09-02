@@ -1,0 +1,128 @@
+<script>
+//Task 1
+var reviewsData = {
+  data: [
+    {
+      id: 1,
+      attributes: {
+        'review-title': 'Terrible!',
+        'stars': 1,
+        'cost': 'high'
+      }
+    },
+    {
+      id: 2,
+      attributes: {
+        'review-title': 'Decent place',
+        'stars': 3,
+        'cost': 'average'
+      }
+    },
+    {
+      id: 3,
+      attributes: {
+        'review-title': 'I would come again',
+        'stars': 3.5,
+        'cost': 'average'
+      }
+    },
+    {
+      id: 4,
+      attributes: {
+        'review-title': 'So good, and cheap!',
+        'stars': 4,
+        'cost': 'low-average'
+      }
+    },
+    {
+      id: 5,
+      attributes: {
+        'review-title': 'Good, but pricey!',
+        'stars': 4,
+        'cost': 'high'
+      }
+    }
+  ]
+};
+
+/*
+[
+  { id: 1, title: 'Terrible!', stars: 1, cost: 'high' },
+  { id: 2, title: 'Decent place', stars: 3, cost: 'average' },
+  { id: 3, title: 'I would come again', stars: 3.5, cost: 'average' },
+  { id: 4, title: 'So good, and cheap!', stars: 4, cost: 'low-average' },
+  { id: 5, title: 'Good, but pricey!', stars: 4, cost: 'high' }
+]
+*/
+function extractReviews(reviewData) {
+  // your implementation
+  return reviewData.data.map( function(review){
+	return {
+		id: review.id,
+		title: review.attributes['review-title'],
+		stars: review.attributes['stars'],
+		cost: review.attributes['cost']
+	};
+  
+  
+  } );
+  
+}
+
+console.log(extractReviews(reviewsData));
+
+//Task 2
+var reviews = [
+  { id: 1, title: 'Terrible!', stars: 1, cost: 'high' },
+  { id: 2, title: 'Decent place', stars: 3, cost: 'average' },
+  { id: 3, title: 'I would come again', stars: 3.5, cost: 'average' },
+  { id: 4, title: 'So good, and cheap!', stars: 4, cost: 'low-average' },
+  { id: 5, title: 'Good, but pricey!', stars: 4, cost: 'high' }
+];
+
+
+
+
+function findGoodReviews(reviews) {
+  // your implementation
+  return reviews.filter( function(review){
+	return review.title.toLowerCase().indexOf('good') > -1;
+  } );
+}
+
+console.log(findGoodReviews(reviews));
+
+//Task 3
+/*
+{
+  'high': 2,
+  'average': 2,
+  'low-average': 1
+}
+*/
+var reviews = [
+  { id: 1, title: 'Terrible!', stars: 1, cost: 'high' },
+  { id: 2, title: 'Decent place', stars: 3, cost: 'average' },
+  { id: 3, title: 'I would come again', stars: 3.5, cost: 'average' },
+  { id: 4, title: 'So good, and cheap!', stars: 4, cost: 'low-average' },
+  { id: 5, title: 'Good, but pricey!', stars: 4, cost: 'high' }
+];
+
+function classifyReviewsByCost(reviews) {
+  // your implementation
+  return reviews.reduce( function(total, review){
+	
+	if( review.cost == 'high' )
+		total['high']++;
+	if( review.cost == 'average' )
+		total['average']++;
+	if( review.cost == 'low-average' )
+		total['low-average']++;
+	return total;
+  
+  },{ 'high':0, 'average':0, 'low-average':0} );
+}
+
+console.log(classifyReviewsByCost(reviews));
+
+</script>
